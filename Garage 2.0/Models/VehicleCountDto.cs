@@ -2,7 +2,7 @@
 {
     public class VehicleCountDto
     {
-        public VehicleType VehicleType { get; set; }
+        public VehicleType_old VehicleType { get; set; }
 
         public TimeSpan timespan { get; set; }
         public int NoOfWheels { get; set; }

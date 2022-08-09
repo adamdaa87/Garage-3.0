@@ -4,7 +4,7 @@ namespace Garage_2._0.Models
 {
     public class StatisticsViewModel
     {
-        public IEnumerable<Vehicle> Vehicles { get; set; } = new List<Vehicle>();
+        public IEnumerable<Vehicle_old> Vehicles { get; set; } = new List<Vehicle_old>();
        
         public string? Vehicle  { get; set; }
         

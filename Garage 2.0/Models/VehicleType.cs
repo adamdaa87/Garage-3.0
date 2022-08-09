@@ -1,10 +1,13 @@
-﻿namespace Garage_2._0.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Garage_2._0.Models
 {
-    public enum VehicleType
+    public class VehicleType
     {
-        Motorcycle,
-        Car,
-        Truck,
-        Bus
+        public int Id { get; set; }
+
+        [Required]
+        public string TypeName { get; set; }
+
     }
 }

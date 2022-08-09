@@ -84,7 +84,7 @@ namespace Garage_2._0.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,RegNr,VehicleType,Make,Model,Color,NrOfWheels")] Vehicle vehicle)
+        public async Task<IActionResult> Create([Bind("Id,RegNr,VehicleType,Make,Model,Color,NrOfWheels")] Vehicle_old vehicle)
         {
             //if (RegNumExists(vehicle2.RegNr))
             //    ModelState.AddModelError("RegNr", "RegNr is already in the garage.");
@@ -151,7 +151,7 @@ namespace Garage_2._0.Controllers
             {
                 try
                 {
-                    var vehicle = new Vehicle
+                    var vehicle = new Vehicle_old
                     {
                         Id = vehicleView.Id,
                         ParkingLot = vehicleView.ParkingLot,
