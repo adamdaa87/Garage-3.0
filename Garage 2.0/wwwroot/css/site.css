@@ -1,0 +1,42 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    background-color: #e7e7ff;
+    background-image: url(https://i.pinimg.com/originals/2e/bf/95/2ebf955255d43215265b82634c8e2e8b.jpg);
+    background-size:cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow-x: hidden;
+}
+.sectioncolors {
+    background-color: #000c48;
+    color: white;
+}
+.searchheight{
+    min-height: 50px;
+}
+.parkbutton{
+    font-size: 40px;
+}
+.listfunc{
+    min-height: 800px;
+}
+.right {
+    position: absolute;
+    left: 0px;
+}

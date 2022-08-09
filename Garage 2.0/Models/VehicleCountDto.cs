@@ -1,0 +1,11 @@
+﻿namespace Garage_2._0.Models
+{
+    public class VehicleCountDto
+    {
+        public VehicleType VehicleType { get; set; }
+
+        public TimeSpan timespan { get; set; }
+        public int NoOfWheels { get; set; }
+        public int Total { get; set; }
+    }
+}
