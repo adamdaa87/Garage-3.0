@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace Garage_2._0.Models
 {
@@ -7,9 +8,10 @@ namespace Garage_2._0.Models
         public int Id { get; set; }
 
         [Required]
+        [DisplayName("Vehicle Type")]
         public string TypeName { get; set; }
 
-        public ICollection<Vehicle> Vehicles { get; set; }
+        public ICollection<Vehicle> Vehicles { get; set; } = new List<Vehicle>();
 
     }
 }
