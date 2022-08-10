@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿
+using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+
 
 namespace Garage_2._0.Models
 {
@@ -17,6 +19,12 @@ namespace Garage_2._0.Models
         [DisplayName("Time parking started")]
         public DateTime TimeOfArrival { get; set; } = DateTime.Now;
 
+
+        // Nav Prop
+        public VehicleType VehicleType { get; set; }
+        public User User { get; set; }
+
+        // FK
         public int VehicleTypeId { get; set; }
         public int UserId { get; set; }
 
