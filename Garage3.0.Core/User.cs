@@ -2,7 +2,7 @@
 
 namespace Garage_2._0.Models
 {
-    public class user
+    public class User
     {
         public int Id { get; set; }
         public string? UserName { get; set; }
@@ -12,6 +12,8 @@ namespace Garage_2._0.Models
         public string Lname { get; set; }
         [Required]
         public string Pnr { get; set; }
+
+        public ICollection<Vehicle> Vehicles { get; set; }
 
     }
 }

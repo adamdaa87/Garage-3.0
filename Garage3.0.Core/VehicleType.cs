@@ -9,5 +9,7 @@ namespace Garage_2._0.Models
         [Required]
         public string TypeName { get; set; }
 
+        public ICollection<Vehicle> Vehicles { get; set; }
+
     }
 }
