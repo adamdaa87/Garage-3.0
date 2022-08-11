@@ -23,9 +23,9 @@ namespace Garage_2._0.Controllers
         public async Task<IActionResult> Index()
         {
               return _context.Vehicle != null ? 
-                          View(await _context.Vehicle.ToListAsync()) :
+                          View(await _context.Vehicle.Include(v => v.VehicleType).Include(u => u.User).ToListAsync()) :
                           Problem("Entity set 'Garage_2_0Context.Vehicle_1'  is null.");
-        }
+        }                   
 
         // GET: Vehicles/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -56,10 +56,11 @@ namespace Garage_2._0.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,RegNr,TimeOfArrival,VehicleTypeId,UserId")] Vehicle vehicle)
+        public async Task<IActionResult> Create([Bind("Id,RegNr,VehicleTypeId,UserId")] Vehicle vehicle)
         {
             if (ModelState.IsValid)
             {
+                vehicle.TimeOfArrival = DateTime.Now;
                 _context.Add(vehicle);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

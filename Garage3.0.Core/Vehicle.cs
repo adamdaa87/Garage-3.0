@@ -17,10 +17,11 @@ namespace Garage_2._0.Models
         [DisplayName("Registration number")]
         public string RegNr { get; set; }
 
-        [DisplayName("Time parking started")]
-        public DateTime TimeOfArrival { get; set; } = DateTime.Now;
+        [DisplayName("Parking started")]
+        public DateTime TimeOfArrival { get; set; }/* = DateTime.Now;*/
 
         // Navigational Property
+        [DisplayName("Vehicle Type")]
         public VehicleType VehicleType { get; set; }
         public User User { get; set; }
 

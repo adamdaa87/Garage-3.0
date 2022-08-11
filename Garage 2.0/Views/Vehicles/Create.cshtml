@@ -1,4 +1,7 @@
-﻿@model Garage_2._0.Models.Vehicle
+﻿@using Garage_2._0.Services
+@model Garage_2._0.Models.Vehicle
+@inject IVehicleTypeSelectListService serviceVT
+@inject IUserSelectListService serviceU
 
 @{
     ViewData["Title"] = "Create";
@@ -17,20 +20,34 @@
                 <input asp-for="RegNr" class="form-control" />
                 <span asp-validation-for="RegNr" class="text-danger"></span>
             </div>
-            <div class="form-group">
+@*            <div class="form-group">
                 <label asp-for="TimeOfArrival" class="control-label"></label>
-                <input asp-for="TimeOfArrival" class="form-control" />
+                <label asp-for="TimeOfArrival" class="form-control" />
                 <span asp-validation-for="TimeOfArrival" class="text-danger"></span>
+            </div>*@
+            <div class="input-group-append">
+                <label asp-for="VehicleTypeId" class="control-label"></label>
+                <select class="form-control" asp-for="VehicleTypeId" asp-items="@await serviceVT.GetVehicleTypesAsync()">
+                    <option selected="selected" value="">Please select</option>
+                </select>
+                <span asp-validation-for="VehicleTypeId" class="text-danger"></span>
             </div>
-            <div class="form-group">
+@*            <div class="form-group">
                 <label asp-for="VehicleTypeId" class="control-label"></label>
                 <input asp-for="VehicleTypeId" class="form-control" />
                 <span asp-validation-for="VehicleTypeId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
+            </div>*@
+@*            <div class="form-group">
                 <label asp-for="UserId" class="control-label"></label>
                 <input asp-for="UserId" class="form-control" />
                 <span asp-validation-for="UserId" class="text-danger"></span>
+            </div>*@
+            <div class="input-group-append">
+                <label asp-for="User" class="control-label"></label>
+                <select class="form-control" asp-for="UserId" asp-items="@await serviceU.GetUsersAsync()">
+                    <option selected="selected" value="">Please select</option>
+                </select>
+                <span asp-validation-for="User" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

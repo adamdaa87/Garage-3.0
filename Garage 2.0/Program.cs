@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Garage_2._0.Data;
+using Garage_2._0.Services;
 
 namespace Garage_2._0
 {
@@ -14,6 +15,10 @@ namespace Garage_2._0
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            // Register my services
+            builder.Services.AddScoped<IVehicleTypeSelectListService, VehicleTypeSelectListService>();
+            builder.Services.AddScoped<IUserSelectListService, UserSelectListService>();
 
             var app = builder.Build();
 
