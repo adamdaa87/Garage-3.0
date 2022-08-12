@@ -1,4 +1,7 @@
-﻿@model Garage_2._0.Models.Vehicle_old
+﻿@using Garage_2._0.Services
+@model Vehicle
+@inject IVehicleTypeSelectListService serviceVT
+@inject IUserSelectListService serviceU
 
 @{
     ViewData["Title"] = "Create";
@@ -16,13 +19,30 @@
                 <input asp-for="RegNr" class="form-control" />
                 <span asp-validation-for="RegNr" class="text-danger"></span>
             </div>
-            <div class="form-group">
+@*            <div class="form-group">
                 <label asp-for="VehicleType" class="control-label"></label>
-                <select class="form-control" asp-for="VehicleType" asp-items="@Html.GetEnumSelectList<VehicleType_old>()">
+                <select class="form-control" asp-for="VehicleType" asp-items="@Html.GetEnumSelectList<VehicleType>()">
                     <option selected="selected" value="">Select Vehicle Type</option>
                 </select>
-                @*<input asp-for="VehicleType" class="form-control" />*@
+                <input asp-for="VehicleType" class="form-control" />
                 <span asp-validation-for="VehicleType" class="text-danger"></span>
+            </div>*@
+            <div class="input-group-append">
+                <label asp-for="VehicleTypeId" class="control-label"></label>
+                <select class="form-control" asp-for="VehicleTypeId" asp-items="@await serviceVT.GetVehicleTypesAsync()">
+                    <option selected="selected" value="">Please select</option>
+                </select>
+                <span asp-validation-for="VehicleTypeId" class="text-danger"></span>
+            </div>
+            <div class="input-group-append">
+                <label asp-for="User" class="control-label"></label>
+                <select class="form-control" asp-for="UserId" asp-items="@await serviceU.GetUsersAsync()">
+                    <option selected="selected" value="">Please select</option>
+                </select>
+                <span asp-validation-for="User" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
             </div>
             <div class="form-group">
                 <label asp-for="Make" class="control-label"></label>

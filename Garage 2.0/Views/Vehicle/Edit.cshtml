@@ -1,4 +1,5 @@
-﻿@model Garage_2._0.Models.EditVehicleViewModel
+﻿@*@model Garage_2._0.Models.EditVehicleViewModel*@
+@model Vehicle
 
 @{
     ViewData["Title"] = "Rebuild Vehicle";
@@ -29,13 +30,13 @@
                 @Model.TimeOfArrival
             </div>
             <br />
-            <div class="form-group">
+@*            <div class="form-group">
                 <label asp-for="VehicleType" class="control-label"></label>
                 <select class="form-control" asp-for="VehicleType" asp-items="@Html.GetEnumSelectList<VehicleType_old>()">
                     <option selected="selected" value="">Select Vehicle Type</option>
                 </select>
                 <span asp-validation-for="VehicleType" class="text-danger"></span>
-            </div>
+            </div>*@
             <div class="form-group">
                 <label asp-for="Make" class="control-label"></label>
                 <input asp-for="Make" class="form-control" />

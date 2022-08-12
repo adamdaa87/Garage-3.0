@@ -1,10 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Garage3._0.Core.Entities;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Garage_2._0.Models
 {
     public class StatisticsViewModel
     {
-        public IEnumerable<Vehicle_old> Vehicles { get; set; } = new List<Vehicle_old>();
+        public IEnumerable<Vehicle> Vehicles { get; set; } = new List<Vehicle>();
        
         public string? Vehicle  { get; set; }
         

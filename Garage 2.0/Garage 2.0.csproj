@@ -9,9 +9,19 @@
 
   <ItemGroup>
     <Compile Remove="Models\Services\**" />
+    <Compile Remove="Views\Vehicles\**" />
     <Content Remove="Models\Services\**" />
+    <Content Remove="Views\Vehicles\**" />
     <EmbeddedResource Remove="Models\Services\**" />
+    <EmbeddedResource Remove="Views\Vehicles\**" />
     <None Remove="Models\Services\**" />
+    <None Remove="Views\Vehicles\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Controllers\VehiclesController.cs" />
+    <Compile Remove="Models\VehicleType_old.cs" />
+    <Compile Remove="Models\Vehicle_old.cs" />
   </ItemGroup>
 
   <ItemGroup>

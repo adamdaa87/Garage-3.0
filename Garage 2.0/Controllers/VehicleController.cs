@@ -10,6 +10,7 @@ using Garage_2._0.Models;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System.Text.RegularExpressions;
 using Garage3._0.Core.ViewModels;
+using Garage3._0.Core.Entities;
 
 namespace Garage_2._0.Controllers
 {
@@ -57,7 +58,7 @@ namespace Garage_2._0.Controllers
 
         public async Task<IActionResult> Index2(string searchString)
         {
-            var vehicles = from m in _context.Vehicle_old
+            var vehicles = from m in _context.Vehicle
                          select m;
 
             if (!String.IsNullOrEmpty(searchString))
@@ -71,12 +72,12 @@ namespace Garage_2._0.Controllers
         // GET: Vehicle2/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Vehicle_old == null)
+            if (id == null || _context.Vehicle == null)
             {
                 return NotFound();
             }
 
-            var vehicle2 = await _context.Vehicle_old
+            var vehicle2 = await _context.Vehicle
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (vehicle2 == null)
             {
@@ -97,13 +98,13 @@ namespace Garage_2._0.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,RegNr,VehicleTypeId,Make,Model,Color,NrOfWheels,UserId")] Vehicle_old vehicle)
+        public async Task<IActionResult> Create([Bind("Id,RegNr,VehicleTypeId,Make,Model,Color,NrOfWheels,UserId")] Vehicle vehicle)
         {
             //if (RegNumExists(vehicle2.RegNr))
             //    ModelState.AddModelError("RegNr", "RegNr is already in the garage.");
             // return Problem("RegNr is already in the garage.");
 
-            var vehicles = await _context.Vehicle_old.ToListAsync();
+            var vehicles = await _context.Vehicle.ToListAsync();
 
             if(vehicles.Count == _capacity)
                 return Problem("Garage is Full");
@@ -125,9 +126,9 @@ namespace Garage_2._0.Controllers
         // GET: Vehicle2/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Vehicle_old == null) return NotFound();
+            if (id == null || _context.Vehicle == null) return NotFound();
 
-            var vehicle = await _context.Vehicle_old.FindAsync(id);
+            var vehicle = await _context.Vehicle.FindAsync(id);
             if (vehicle == null) return NotFound();
 
             var viewModel = new EditVehicleViewModel
@@ -135,7 +136,6 @@ namespace Garage_2._0.Controllers
                 Id = vehicle.Id,
                 ParkingLot = vehicle.ParkingLot,
                 RegNr = vehicle.RegNr,
-                VehicleType = vehicle.VehicleType,
                 Make = vehicle.Make,
                 Model = vehicle.Model,
                 Color = vehicle.Color,
@@ -164,12 +164,11 @@ namespace Garage_2._0.Controllers
             {
                 try
                 {
-                    var vehicle = new Vehicle_old
+                    var vehicle = new Vehicle
                     {
                         Id = vehicleView.Id,
                         ParkingLot = vehicleView.ParkingLot,
                         RegNr = vehicleView.RegNr,
-                        VehicleType = vehicleView.VehicleType,
                         Make = vehicleView.Make,
                         Model = vehicleView.Model,
                         Color = vehicleView.Color,
@@ -197,9 +196,9 @@ namespace Garage_2._0.Controllers
         // GET: Vehicle2/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Vehicle_old == null) return NotFound();
+            if (id == null || _context.Vehicle == null) return NotFound();
 
-            var vehicle2 = await _context.Vehicle_old
+            var vehicle2 = await _context.Vehicle
                 .FirstOrDefaultAsync(m => m.Id == id);
 
             if(vehicle2 == null) return NotFound();
@@ -222,14 +221,14 @@ namespace Garage_2._0.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Vehicle_old == null)
+            if (_context.Vehicle == null)
             {
                 return Problem("Entity set 'Garage_2_0Context.Vehicle2'  is null.");
             }
-            var vehicle2 = await _context.Vehicle_old.FindAsync(id);
+            var vehicle2 = await _context.Vehicle.FindAsync(id);
             if (vehicle2 != null)
             {
-                _context.Vehicle_old.Remove(vehicle2);
+                _context.Vehicle.Remove(vehicle2);
             }
             
             await _context.SaveChangesAsync();
@@ -239,7 +238,7 @@ namespace Garage_2._0.Controllers
 
         private bool VehicleExists(int id)
         {
-            return (_context.Vehicle_old?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Vehicle?.Any(e => e.Id == id)).GetValueOrDefault();
         }
   
         [HttpGet]
@@ -250,7 +249,7 @@ namespace Garage_2._0.Controllers
             {
                 return Json("Invalid RegNr format");
             }
-            else if ((_context.Vehicle_old?.Any(r => r.RegNr.ToUpper() == regnr.ToUpper())).GetValueOrDefault())
+            else if ((_context.Vehicle?.Any(r => r.RegNr.ToUpper() == regnr.ToUpper())).GetValueOrDefault())
             {
                 return Json("RegNr is already in the garage");
             }
@@ -260,7 +259,7 @@ namespace Garage_2._0.Controllers
 
         private int GetParkingLot()
         {
-            var vehicles = _context.Vehicle_old.ToList();
+            var vehicles = _context.Vehicle.ToList();
             int parkingLot = 0, i = 1;
 
             foreach (var vehicle in vehicles.OrderBy(p => p.ParkingLot).ToList())
@@ -277,7 +276,7 @@ namespace Garage_2._0.Controllers
 
         public async Task<IActionResult> Statistics()
         {
-            if (_context.Vehicle_old == null)
+            if (_context.Vehicle == null)
             {
                 return NotFound();
             }
@@ -301,7 +300,7 @@ namespace Garage_2._0.Controllers
 
         private async Task<List<VehicleCountDto>> Statistics_1_Async()
         {
-            return await _context.Vehicle_old.GroupBy(v => v.VehicleType)
+            return await _context.Vehicle.GroupBy(v => v.VehicleType)
                                                  .Select(vt => new VehicleCountDto
                                                  {
                                                      VehicleType = vt.Key,
@@ -311,7 +310,7 @@ namespace Garage_2._0.Controllers
 
         private async Task<int> Statistics_2_Async()
         {
-            return _context.Vehicle_old.Sum(v => v.NrOfWheels);                                            
+            return _context.Vehicle.Sum(v => v.NrOfWheels);                                            
         }
     }
 }

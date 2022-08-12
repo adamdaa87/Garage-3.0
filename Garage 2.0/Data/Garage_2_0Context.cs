@@ -14,7 +14,7 @@ namespace Garage_2._0.Data
             : base(options)
         {
         }
-        public DbSet<Garage_2._0.Models.Vehicle_old> Vehicle_old => Set<Vehicle_old>();
+        //public DbSet<Garage_2._0.Models.Vehicle_old> Vehicle_old => Set<Vehicle_old>();
         //public DbSet<Garage_2._0.Models.Vehicle2> Vehicle2 { get; set; } = null!;
 
         public DbSet<Vehicle> Vehicle => Set<Vehicle>();

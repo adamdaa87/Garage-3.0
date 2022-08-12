@@ -1,8 +1,10 @@
-﻿namespace Garage_2._0.Models
+﻿using Garage3._0.Core.Entities;
+
+namespace Garage_2._0.Models
 {
     public class VehicleCountDto
     {
-        public VehicleType_old VehicleType { get; set; }
+        public VehicleType VehicleType { get; set; }
 
         public TimeSpan timespan { get; set; }
         public int NoOfWheels { get; set; }

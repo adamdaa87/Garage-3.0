@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using Garage3._0.Core.Entities;
+using System.ComponentModel;
 
 namespace Garage_2._0.Models
 {
@@ -13,7 +14,7 @@ namespace Garage_2._0.Models
         public string RegNr { get; set; } = String.Empty;
 
         [DisplayName("Type of vehicle")]
-        public VehicleType_old VehicleType { get; set; }
+        public VehicleType VehicleType { get; set; }
 
         [DisplayName("Make")]
         public string Make { get; set; }
