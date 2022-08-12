@@ -98,11 +98,11 @@ namespace Garage_2._0.Controllers
             if (ModelState.IsValid)
             {
                 vehicle.RegNr = vehicle.RegNr.ToUpper();
-                vehicle.ParkingLot = GetParkingLot();
+                vehicle.ParkingLot = await GetParkingLot();
 
                 _context.Add(vehicle);
                 await _context.SaveChangesAsync();
-                TempData["Message"] = $"Vehicle with registration number {vehicle.RegNr} has been parked";
+                TempData["Message"] = $"Vehicle {vehicle.RegNr} has been parked";
                 return RedirectToAction(nameof(Index));
                 
             }
@@ -228,16 +228,34 @@ namespace Garage_2._0.Controllers
         {
             return (_context.Vehicle_old?.Any(e => e.Id == id)).GetValueOrDefault();
         }
-  
+
+
+
+
         [HttpGet]
-        public JsonResult ValidateRegNum(string regnr)
+        //public JsonResult ValidateRegNum(string regnr)
+        //{
+        //    var r = new Regex("[A-Z][A-Z][A-Z][1-9][1-9][1-9]");
+        //    if (!r.IsMatch(regnr.ToUpper()))
+        //    {
+        //        return Json("Invalid RegNr format");
+        //    }
+        //    else if ((_context.Vehicle_old?.Any(r => r.RegNr.ToUpper() == regnr.ToUpper())).GetValueOrDefault())
+        //    {
+        //        return Json("RegNr is already in the garage");
+        //    }
+
+        //    return Json(true);
+        //}
+
+        public async Task<JsonResult> ValidateRegNum(string regnr)
         {
             var r = new Regex("[A-Z][A-Z][A-Z][1-9][1-9][1-9]");
             if (!r.IsMatch(regnr.ToUpper()))
             {
                 return Json("Invalid RegNr format");
             }
-            else if ((_context.Vehicle_old?.Any(r => r.RegNr.ToUpper() == regnr.ToUpper())).GetValueOrDefault())
+            else if(await _context.Vehicle_old.AnyAsync(r => r.RegNr.ToUpper() == regnr.ToUpper()))
             {
                 return Json("RegNr is already in the garage");
             }
@@ -245,9 +263,26 @@ namespace Garage_2._0.Controllers
             return Json(true);
         }
 
-        private int GetParkingLot()
+
+        //private int GetParkingLot2()
+        //{
+        //    var vehicles = _context.Vehicle_old.ToList();
+        //    int parkingLot = 0, i = 1;
+
+        //    foreach (var vehicle in vehicles.OrderBy(p => p.ParkingLot).ToList())
+        //    {
+        //        if (vehicle.ParkingLot > parkingLot + 1) return parkingLot + 1;
+
+        //        parkingLot = vehicle.ParkingLot;
+        //        i++;
+        //    }
+
+        //    return i;
+        //}
+
+        public async Task<int> GetParkingLot()
         {
-            var vehicles = _context.Vehicle_old.ToList();
+            var vehicles = await _context.Vehicle_old.ToListAsync();
             int parkingLot = 0, i = 1;
 
             foreach (var vehicle in vehicles.OrderBy(p => p.ParkingLot).ToList())
@@ -260,6 +295,7 @@ namespace Garage_2._0.Controllers
 
             return i;
         }
+
 
 
         public async Task<IActionResult> Statistics()

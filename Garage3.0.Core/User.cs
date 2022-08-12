@@ -17,6 +17,7 @@ namespace Garage_2._0.Models
         public string Lname { get; set; }
         [Required]
         [DisplayName("Personal number")]
+        [StringLength(13)]
         public string Pnr { get; set; }
 
         public ICollection<Vehicle> Vehicles { get; set; } = new List<Vehicle>();

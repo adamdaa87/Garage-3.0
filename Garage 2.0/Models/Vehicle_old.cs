@@ -42,7 +42,7 @@ namespace Garage_2._0.Models
         [DisplayName("Wheels on vehicle")]
         public int NrOfWheels { get; set; }
 
-        [DisplayName("Time parking started")]
+        [DisplayName("Parking started")]
         public DateTime TimeOfArrival { get; set; } = DateTime.Now;
 
     }
