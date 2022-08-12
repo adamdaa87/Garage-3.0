@@ -9,15 +9,16 @@ using Garage_2._0.Data;
 using Garage_2._0.Models;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System.Text.RegularExpressions;
+using Garage3._0.Core.ViewModels;
 
 namespace Garage_2._0.Controllers
 {
-    public class VehicleController_old : Controller
+    public class VehicleController : Controller
     {
         private readonly Garage_2_0Context _context;
         public readonly uint _capacity = 9;
 
-        public VehicleController_old(Garage_2_0Context context)
+        public VehicleController(Garage_2_0Context context)
         {
             _context = context;
         }
@@ -25,17 +26,29 @@ namespace Garage_2._0.Controllers
         // GET: Vehicle2
         public async Task<IActionResult> Index() 
         {
-            if (_context.Vehicle_old != null)
+            //if (_context.Vehicle_old != null)
+            //{
+            //    var vehicles = await _context.Vehicle_old.ToListAsync();
+            //    //ViewData["NrOfParkedVehicles"] = vehicles.Count;
+
+            //    if (vehicles.Count == _capacity) ViewData["NrOfAvailableSlots"] = "The garage is full";
+            //    else ViewData["NrOfAvailableSlots"] = _capacity - vehicles.Count;
+
+            //    return View(vehicles);
+            //}
+            //else return Problem("Entity set 'Garage_2_0Context.Vehicle2'  is null.");
+
+            return View(await _context.Vehicle.Select(v => new IndexViewModel
             {
-                var vehicles = await _context.Vehicle_old.ToListAsync();
-                //ViewData["NrOfParkedVehicles"] = vehicles.Count;
-
-                if (vehicles.Count == _capacity) ViewData["NrOfAvailableSlots"] = "The garage is full";
-                else ViewData["NrOfAvailableSlots"] = _capacity - vehicles.Count;
-
-                return View(vehicles);
-            }
-            else return Problem("Entity set 'Garage_2_0Context.Vehicle2'  is null.");
+                Fname = v.User.Fname,
+                Lname = v.User.Lname,
+                Id = v.Id,
+                RegNr = v.RegNr,
+                TimeOfArrival = v.TimeOfArrival,
+                TypeName = v.VehicleType.TypeName,
+                ParkingLot = v.ParkingLot
+            }).ToListAsync());
+                
 
             //return _context.Vehicle2 != null ?
             //            View(await _context.Vehicle2.ToListAsync()) :
@@ -84,7 +97,7 @@ namespace Garage_2._0.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,RegNr,VehicleType,Make,Model,Color,NrOfWheels")] Vehicle_old vehicle)
+        public async Task<IActionResult> Create([Bind("Id,RegNr,VehicleTypeId,Make,Model,Color,NrOfWheels,UserId")] Vehicle_old vehicle)
         {
             //if (RegNumExists(vehicle2.RegNr))
             //    ModelState.AddModelError("RegNr", "RegNr is already in the garage.");
@@ -143,7 +156,7 @@ namespace Garage_2._0.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, /*[Bind("Id,ParkingLot,RegNr,VehicleType,Make,Model,Color,NrOfWheels")]*/ EditVehicleViewModel vehicleView)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,ParkingLot,RegNr,VehicleTypeId,Make,Model,Color,NrOfWheels,UserId")] EditVehicleViewModel vehicleView)
         {
             if (id != vehicleView.Id) return NotFound();
 

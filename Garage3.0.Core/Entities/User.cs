@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace Garage_2._0.Models
+namespace Garage3._0.Core.Entities
 {
     public class User
     {
