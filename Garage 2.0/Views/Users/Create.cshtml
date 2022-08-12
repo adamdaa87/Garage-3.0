@@ -4,12 +4,13 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
 
-<h4>User</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
+<h2 class = "text-color = text-light">Create User</h2>
+<hr/>
+
+<div class = "container align-items-start">
+<div class = "col-4 bg-light text-color = text-dark fw-bold ">
+<div class="row m-1">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
@@ -27,20 +28,20 @@
                 <input asp-for="Lname" class="form-control" />
                 <span asp-validation-for="Lname" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class= "form-group">
                 <label asp-for="Pnr" class="control-label"></label>
-                <input asp-for="Pnr" class="form-control" />
+                <input asp-for="Pnr" class="form-control " placeholder ="yyyymmddxxxx"/>
                 <span asp-validation-for="Pnr" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group my-2">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
-    </div>
 </div>
-
+</div>
+</div>
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" class="btn btn-primary m-2">Back to List</a>
 </div>
 
 @section Scripts {

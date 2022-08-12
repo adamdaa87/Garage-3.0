@@ -155,6 +155,18 @@ namespace Garage_2._0.Models
             return RedirectToAction(nameof(Index));
         }
 
+        [HttpGet]
+        public JsonResult ValidateName(string Fname, string Lname)
+        {
+            if(String.Equals(Fname.ToLower(), Lname.ToLower()))
+                return Json("FirstName and LastName shall not be the same.");
+            else
+            {
+                return Json(true);
+            }
+            
+        }
+
         private bool UserExists(int id)
         {
           return (_context.User?.Any(e => e.Id == id)).GetValueOrDefault();

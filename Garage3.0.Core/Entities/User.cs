@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace Garage3._0.Core.Entities
@@ -9,12 +10,16 @@ namespace Garage3._0.Core.Entities
 
         [DisplayName("User Name")]
         public string? UserName { get; set; }
+
         [Required]
         [DisplayName("First Name")]
         public string Fname { get; set; }
+
         [Required]
+        [Remote("ValidateName", "Users", AdditionalFields = nameof(Fname))]
         [DisplayName("Last Name")]
         public string Lname { get; set; }
+
         [Required]
         [DisplayName("Personal number")]
         public string Pnr { get; set; }
