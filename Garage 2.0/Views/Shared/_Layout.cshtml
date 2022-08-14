@@ -21,9 +21,6 @@
                     <ul class="navbar-nav flex-grow-1">
 @*                        <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>*@
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Vehicle" asp-action="Index">Park vehicle</a>
@@ -31,11 +28,14 @@
                          <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Vehicle" asp-action="Statistics">Statistics</a>
                         </li>
-                        <li class="nav-item">
+@*                        <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="VehicleTypes" asp-action="Index">Vehicle Types</a>
                         </li>
                          <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Users" asp-action="Index">Users</a>
+                        </li>*@
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Vehicle" asp-action="/Admin">Admin</a>
                         </li>
                    </ul>
                 </div>

@@ -1,14 +1,14 @@
 ﻿@model IEnumerable<IndexViewModel>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Admin";
 }
 
 @*@if (@Model.Message == "")
 {
     <div class="alert alert-success">@Model.Message</div>
 }*@
-<div class="container">
+@*<div class="container">
 <div class="row my-3">
 <div class="col-2 mt-3">    
     <div class="card rounded-3 sectioncolors border-2 border-white">
@@ -20,16 +20,18 @@
 <a asp-action="Create" class="btn btn-success rounded-circle text-white parkbutton p-4 border-2 border-white">Park your car</a>
 </div>
 </div>
-</div>
+</div>*@
 
 
-@if(TempData["Message"] != null)
+@*@if(TempData["Message"] != null)
 {
     <div id="div" class="alert alert-success my-3 text-center">@TempData["Message"]</div>
-}
-@*
+}*@
+
 <div class="card rounded-3 listfunc border-0">
 <div class="container">
+    <a class="nav-link" asp-area="" asp-controller="Users" asp-action="Index">Users</a>
+    <a class="nav-link" asp-area="" asp-controller="VehicleTypes" asp-action="Index">Vehicle Types</a>
 <div class="row sectioncolors">
 <div class="col-3"></div>
 <div class="card-title col-6 text-center">
@@ -56,7 +58,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.TypeName)
             </th>
-          <th>
+       @*   <th>
                 @Html.DisplayNameFor(model => model.Fname)
             </th>
             <th>
@@ -68,7 +70,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.NrOfWheels)
             </th>
-            <th>
+            <th>*@
                 @Html.DisplayNameFor(model => model.TimeOfArrival)
             </th>
             <th></th>
@@ -86,7 +88,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.TypeName)
             </td>
-          <td>
+@*          <td>
                 @Html.DisplayFor(modelItem => item.Make)
             </td>
             <td>
@@ -97,13 +99,13 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.NrOfWheels)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.TimeOfArrival)
             </td>
-            <th>
+@*            <th>
                 @Html.DisplayNameFor(model => model.User)
-            </th>
+            </th>*@
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-dark">Visit workshop</a>
                 <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-dark">View vehicle</a>
@@ -113,6 +115,6 @@
 }
 
     </tbody>
-</table>*@
+</table>
 </div>
 </div>
