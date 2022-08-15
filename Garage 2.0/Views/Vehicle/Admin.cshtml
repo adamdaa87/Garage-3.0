@@ -7,8 +7,8 @@
 @*@if (@Model.Message == "")
 {
     <div class="alert alert-success">@Model.Message</div>
-}*@
-@*<div class="container">
+}
+<div class="container">
 <div class="row my-3">
 <div class="col-2 mt-3">    
     <div class="card rounded-3 sectioncolors border-2 border-white">
@@ -20,10 +20,10 @@
 <a asp-action="Create" class="btn btn-success rounded-circle text-white parkbutton p-4 border-2 border-white">Park your car</a>
 </div>
 </div>
-</div>*@
+</div>
 
 
-@*@if(TempData["Message"] != null)
+@if(TempData["Message"] != null)
 {
     <div id="div" class="alert alert-success my-3 text-center">@TempData["Message"]</div>
 }*@
@@ -49,6 +49,12 @@
 <table class="table mb-5">
     <thead>
         <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Fname)
+            </th>  
+            <th>
+                @Html.DisplayNameFor(model => model.Lname)
+            </th>  
             <th>
                 @Html.DisplayNameFor(model => model.ParkingLot)
             </th>            
@@ -79,6 +85,12 @@
     <tbody>
 @foreach (var item in Model.OrderBy(p => p.ParkingLot).ToList()) {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lname)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ParkingLot)
             </td>

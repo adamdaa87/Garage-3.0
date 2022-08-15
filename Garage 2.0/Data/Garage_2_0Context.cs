@@ -14,27 +14,34 @@ namespace Garage_2._0.Data
             : base(options)
         {
         }
-        //public DbSet<Garage_2._0.Models.Vehicle_old> Vehicle_old => Set<Vehicle_old>();
-        //public DbSet<Garage_2._0.Models.Vehicle2> Vehicle2 { get; set; } = null!;
-
-        public DbSet<Vehicle> Vehicle => Set<Vehicle>();
+        public DbSet<Vehicle> Vehicle {  get ; set; }
         public DbSet<User>? User { get; set; }
         public DbSet<VehicleType>? VehicleType { get; set; }
 
-        //protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //{
-        //    base.OnModelCreating(modelBuilder);
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
 
-        //    modelBuilder.Entity<Vehicle_old>().HasData(
-        //        new Vehicle_old { Id = 1, ParkingLot = 1, RegNr = "ABC123", VehicleType = VehicleType_old.Car, Make = "Volvo", Model = "V70", Color = "Silver", NrOfWheels = 4, TimeOfArrival = DateTime.Now },
-        //        new Vehicle_old { Id = 2, ParkingLot = 2, RegNr = "DEF456", VehicleType = VehicleType_old.Car, Make = "Saab", Model = "95", Color = "Red", NrOfWheels = 4, TimeOfArrival = DateTime.Now },
-        //        new Vehicle_old { Id = 3, ParkingLot = 3, RegNr = "GHI789", VehicleType = VehicleType_old.Car, Make = "Ford", Model = "Mustang", Color = "Green", NrOfWheels = 4, TimeOfArrival = DateTime.Now },
-        //        new Vehicle_old { Id = 4, ParkingLot = 4, RegNr = "JKL891", VehicleType = VehicleType_old.Motorcycle, Make = "Harley-Davidson", Model = "Pan America", Color = "Black", NrOfWheels = 2, TimeOfArrival = DateTime.Now },
-        //        new Vehicle_old { Id = 5, ParkingLot = 5, RegNr = "MNO345", VehicleType = VehicleType_old.Truck, Make = "Scania", Model = "XT", Color = "Orange", NrOfWheels = 6, TimeOfArrival = DateTime.Now },
-        //        new Vehicle_old { Id = 6, ParkingLot = 6, RegNr = "PQR912", VehicleType = VehicleType_old.Bus, Make = "Scania", Model = "zzz", Color = "Yellow", NrOfWheels = 6, TimeOfArrival = DateTime.Now }
-        //        );
+            modelBuilder.Entity<Vehicle>().HasData(
+                new Vehicle { Id = 1, UserId = 1, VehicleTypeId = 1, ParkingLot = 1, RegNr = "ABC123", Make = "Volvo", Model = "V70", Color = "Silver", TimeOfArrival = DateTime.Now },
+                new Vehicle { Id = 2, UserId = 1, VehicleTypeId = 1, ParkingLot = 2, RegNr = "DEF456", Make = "Saab", Model = "95", Color = "Red", TimeOfArrival = DateTime.Now },
+                new Vehicle { Id = 3, UserId = 2, VehicleTypeId = 1, ParkingLot = 3, RegNr = "GHI789", Make = "Ford", Model = "Mustang", Color = "Green", TimeOfArrival = DateTime.Now },
+                new Vehicle { Id = 4, UserId = 2, VehicleTypeId = 1, ParkingLot = 4, RegNr = "JKL891", Make = "Harley-Davidson", Model = "Pan America", Color = "Black", TimeOfArrival = DateTime.Now },
+                new Vehicle { Id = 5, UserId = 3, VehicleTypeId = 1, ParkingLot = 5, RegNr = "MNO345", Make = "Scania", Model = "XT", Color = "Orange", TimeOfArrival = DateTime.Now },
+                new Vehicle { Id = 6, UserId = 3, VehicleTypeId = 1, ParkingLot = 6, RegNr = "PQR912", Make = "Scania", Model = "zzz", Color = "Yellow", TimeOfArrival = DateTime.Now }
+                );
 
-        //}
+            modelBuilder.Entity<User>().HasData(
+                new User { Fname = "James", Lname = "Hetfield", Id = 1, Pnr = "199010109285", UserName = "James1" },
+                new User { Fname = "Tony", Lname = "Stark", Id = 2, Pnr = "198011259287", UserName = "Ironman" },
+                new User { Fname = "Keanu", Lname = "Reeves", Id = 3, Pnr = "197002169283", UserName = "Neo" }
+                );
+
+            modelBuilder.Entity<VehicleType>().HasData(
+                new VehicleType { Id = 1, TypeName = "Car" }
+                );
+
+        }
 
     }
 }

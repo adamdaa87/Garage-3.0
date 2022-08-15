@@ -4,6 +4,7 @@ using Garage_2._0.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Garage_2._0.Migrations
 {
     [DbContext(typeof(Garage_2_0Context))]
-    partial class Garage_2_0ContextModelSnapshot : ModelSnapshot
+    [Migration("20220815090537_changeseed")]
+    partial class changeseed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,32 +50,6 @@ namespace Garage_2._0.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("User");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Fname = "James",
-                            Lname = "Hetfield",
-                            Pnr = "199010109285",
-                            UserName = "James1"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Fname = "Tony",
-                            Lname = "Stark",
-                            Pnr = "198011259287",
-                            UserName = "Ironman"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Fname = "Keanu",
-                            Lname = "Reeves",
-                            Pnr = "197002169283",
-                            UserName = "Neo"
-                        });
                 });
 
             modelBuilder.Entity("Garage3._0.Core.Entities.Vehicle", b =>
@@ -126,86 +102,6 @@ namespace Garage_2._0.Migrations
                     b.HasIndex("VehicleTypeId");
 
                     b.ToTable("Vehicle");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Color = "Silver",
-                            Make = "Volvo",
-                            Model = "V70",
-                            NrOfWheels = 0,
-                            ParkingLot = 1,
-                            RegNr = "ABC123",
-                            TimeOfArrival = new DateTime(2022, 8, 15, 11, 9, 13, 658, DateTimeKind.Local).AddTicks(6494),
-                            UserId = 1,
-                            VehicleTypeId = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Color = "Red",
-                            Make = "Saab",
-                            Model = "95",
-                            NrOfWheels = 0,
-                            ParkingLot = 2,
-                            RegNr = "DEF456",
-                            TimeOfArrival = new DateTime(2022, 8, 15, 11, 9, 13, 658, DateTimeKind.Local).AddTicks(6539),
-                            UserId = 1,
-                            VehicleTypeId = 1
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Color = "Green",
-                            Make = "Ford",
-                            Model = "Mustang",
-                            NrOfWheels = 0,
-                            ParkingLot = 3,
-                            RegNr = "GHI789",
-                            TimeOfArrival = new DateTime(2022, 8, 15, 11, 9, 13, 658, DateTimeKind.Local).AddTicks(6542),
-                            UserId = 2,
-                            VehicleTypeId = 1
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Color = "Black",
-                            Make = "Harley-Davidson",
-                            Model = "Pan America",
-                            NrOfWheels = 0,
-                            ParkingLot = 4,
-                            RegNr = "JKL891",
-                            TimeOfArrival = new DateTime(2022, 8, 15, 11, 9, 13, 658, DateTimeKind.Local).AddTicks(6545),
-                            UserId = 2,
-                            VehicleTypeId = 1
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Color = "Orange",
-                            Make = "Scania",
-                            Model = "XT",
-                            NrOfWheels = 0,
-                            ParkingLot = 5,
-                            RegNr = "MNO345",
-                            TimeOfArrival = new DateTime(2022, 8, 15, 11, 9, 13, 658, DateTimeKind.Local).AddTicks(6548),
-                            UserId = 3,
-                            VehicleTypeId = 1
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Color = "Yellow",
-                            Make = "Scania",
-                            Model = "zzz",
-                            NrOfWheels = 0,
-                            ParkingLot = 6,
-                            RegNr = "PQR912",
-                            TimeOfArrival = new DateTime(2022, 8, 15, 11, 9, 13, 658, DateTimeKind.Local).AddTicks(6551),
-                            UserId = 3,
-                            VehicleTypeId = 1
-                        });
                 });
 
             modelBuilder.Entity("Garage3._0.Core.Entities.VehicleType", b =>
@@ -223,13 +119,6 @@ namespace Garage_2._0.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("VehicleType");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            TypeName = "Car"
-                        });
                 });
 
             modelBuilder.Entity("Garage3._0.Core.Entities.Vehicle", b =>
