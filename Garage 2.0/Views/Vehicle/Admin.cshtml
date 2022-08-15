@@ -30,15 +30,34 @@
 
 <div class="card rounded-3 listfunc border-0">
 <div class="container">
-    <a class="nav-link" asp-area="" asp-controller="Users" asp-action="Index">Users</a>
-    <a class="nav-link" asp-area="" asp-controller="VehicleTypes" asp-action="Index">Vehicle Types</a>
+
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm box-shadow mb-3 sectioncolors navbar-dark rounded-3">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-success ms-2" asp-area="" asp-controller="Users" asp-action="Index">View Users</a>
+                        </li>
+                         <li class="nav-item">
+                            <a class="nav-link btn btn-success ms-2" asp-area="" asp-controller="VehicleTypes" asp-action="Index">Vehicle Types</a>
+                        </li>
+@*                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Vehicle" asp-action="Admin">Admin</a>
+                        </li>*@
+                   </ul>
+                </div>
+        </nav> 
+
 <div class="row sectioncolors">
 <div class="col-3"></div>
 <div class="card-title col-6 text-center">
     <h3 class="m-2">Current cars in garage</h3>
-    <form asp-controller="Vehicle" asp-action="Index2" method="get">
+    <form asp-controller="Vehicle" asp-action="Admin2" method="get">
     <p>
-        <input class="rounded-3 searchheight" type="text" name="SearchString" placeholder="Registration number" />
+        <input class="rounded-3 searchheight" type="text" name="SearchString" placeholder="Search" />
         <input class="btn btn-success rounded-3 text-white searchheight" type="submit" value="Search" />
     </p>
     </form> 

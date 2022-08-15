@@ -118,7 +118,7 @@ namespace Garage_2._0.Controllers
             var vehicle = await _context.Vehicle.FindAsync(id);
             if (vehicle == null) return NotFound();
 
-            var viewModel = new EditVehicleViewModel
+            var viewModel = new Vehicle
             {
                 Id = vehicle.Id,
                 ParkingLot = vehicle.ParkingLot,
@@ -315,6 +315,9 @@ namespace Garage_2._0.Controllers
                 Model = v.Model,
                 Color = v.Color
             }).ToListAsync());
+
+            //_context.Vehicle.OrderBy(v => v.User.Fname);
+            //await _context.SaveChangesAsync();                
         }
         public async Task<IActionResult> Admin2(string searchString)
         {
@@ -323,7 +326,10 @@ namespace Garage_2._0.Controllers
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                vehicles = vehicles.Where(s => s.RegNr!.Contains(searchString));
+                vehicles = vehicles.Where(s => s.RegNr!.Contains(searchString) 
+                || s.User.Fname.Contains(searchString) 
+                || s.User.Lname.Contains(searchString) 
+                || s.VehicleType.TypeName.Contains(searchString));
             }
 
             return View(nameof(Admin), await vehicles.ToListAsync());

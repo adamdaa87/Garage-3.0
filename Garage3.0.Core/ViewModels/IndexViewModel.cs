@@ -43,5 +43,6 @@ namespace Garage3._0.Core.ViewModels
         public string Color { get; set; }
 
 
+
     }
 }
