@@ -40,7 +40,8 @@ namespace Garage_2._0.Migrations
 
                     b.Property<string>("Pnr")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(12)
+                        .HasColumnType("nvarchar(12)");
 
                     b.Property<string>("UserName")
                         .HasColumnType("nvarchar(max)");

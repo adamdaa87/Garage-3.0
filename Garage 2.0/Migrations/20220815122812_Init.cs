@@ -18,7 +18,7 @@ namespace Garage_2._0.Migrations
                     UserName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Fname = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Lname = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Pnr = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Pnr = table.Column<string>(type: "nvarchar(12)", maxLength: 12, nullable: false)
                 },
                 constraints: table =>
                 {

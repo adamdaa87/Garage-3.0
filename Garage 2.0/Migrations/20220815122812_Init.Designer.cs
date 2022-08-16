@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Garage_2._0.Migrations
 {
     [DbContext(typeof(Garage_2_0Context))]
-    [Migration("20220812130721_Init")]
+    [Migration("20220815122812_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -42,7 +42,8 @@ namespace Garage_2._0.Migrations
 
                     b.Property<string>("Pnr")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(12)
+                        .HasColumnType("nvarchar(12)");
 
                     b.Property<string>("UserName")
                         .HasColumnType("nvarchar(max)");

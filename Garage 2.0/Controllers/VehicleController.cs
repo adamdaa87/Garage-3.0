@@ -300,12 +300,21 @@ namespace Garage_2._0.Controllers
 
         private async Task<List<VehicleCountDto>> Statistics_1_Async()
         {
-            return await _context.Vehicle.GroupBy(v => v.VehicleType)
-                                                 .Select(vt => new VehicleCountDto
-                                                 {
-                                                     VehicleType = vt.Key,
-                                                     Total = vt.Count()
-                                                 }).ToListAsync();
+
+            //Linq aggregate
+          return await _context.VehicleType.Select(v => new VehicleCountDto
+                                                   {
+                                                        VehicleType = v.TypeName,
+                                                        Total = v.Vehicles.Count(),
+                                                    }).ToListAsync();
+
+            //return await _context.Vehicle.GroupBy(v => v.VehicleType)
+            //                                     .Select(vt => new VehicleCountDto
+            //                                     {
+            //                                         VehicleType = vt.Key,
+            //                                         Total = vt.Count()
+            //                                     }).ToListAsync();
+
         }
 
         private async Task<int> Statistics_2_Async()

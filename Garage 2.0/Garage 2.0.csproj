@@ -39,8 +39,4 @@
     <ProjectReference Include="..\Garage3.0.Data\Garage3.0.Data.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Migrations\" />
-  </ItemGroup>
-
 </Project>

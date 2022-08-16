@@ -18,8 +18,8 @@ namespace Garage_2._0.Data
         //public DbSet<Garage_2._0.Models.Vehicle2> Vehicle2 { get; set; } = null!;
 
         public DbSet<Vehicle> Vehicle => Set<Vehicle>();
-        public DbSet<User>? User { get; set; }
-        public DbSet<VehicleType>? VehicleType { get; set; }
+        public DbSet<User> User { get; set; } = null!;
+        public DbSet<VehicleType> VehicleType => Set<VehicleType>();
 
         //protected override void OnModelCreating(ModelBuilder modelBuilder)
         //{
