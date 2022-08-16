@@ -15,7 +15,7 @@
 			<dd class="col-sm-10">
 				@Html.Raw("Count")
 			</dd>
-			<div>@Html.Raw("---------------------------------------------")</div>
+			<hr class= "bg-dark"/>
 			@foreach (var vehicleCount in Model.VehicleCount)
 			{
 				<dt class="col-sm-2">
@@ -28,8 +28,8 @@
 		</dl>
 	</div>
 	<div>
-		<div>@Html.Raw("*********************************************")</div>
-		<dl class="row">
+		<hr class = "bg-dark"/>
+		<dl class = "row">
 			<dt class="col-sm-2">
 				@Html.Raw("Number of wheels:")
 			</dt>

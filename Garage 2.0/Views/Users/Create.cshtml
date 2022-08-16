@@ -1,4 +1,4 @@
-﻿@model User
+﻿@model Garage3._0.Core.Entities.User
 
 @{
     ViewData["Title"] = "Create";
@@ -30,10 +30,9 @@
             </div>
             <div class="form-group">
                 <label asp-for="Pnr" class="control-label"></label>
-                <input asp-for="Pnr" class="form-control" />
-                <span asp-validation-for="Pnr" class="text-danger"></span>
-            </div><br />
-
+                <input asp-for="Pnr" class="form-control" placeholder="yyyymmddxxxx" />
+                <span asp-validation-for="Pnr" class="text-danger" ></span>
+            </div>
             <div class="form-group">
                 <input type="submit" value="Register" class="btn btn-success my-4 mx-3" /><a asp-controller="Vehicle" asp-action="Index" class="btn btn-dark">Go back to mainpage</a>
             </div>

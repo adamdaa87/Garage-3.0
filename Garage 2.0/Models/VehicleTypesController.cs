@@ -57,6 +57,7 @@ namespace Garage_2._0.Models
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,TypeName")] VehicleType vehicleType)
+
         {
             if (ModelState.IsValid)
             {

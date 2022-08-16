@@ -1,4 +1,4 @@
-﻿@model User
+﻿@model Garage3._0.Core.Entities.User
 
 @{
     ViewData["Title"] = "Details";
@@ -11,7 +11,6 @@
     <div class="col-md-5"></div>
     <div class="col-md-2">
 <div>
-    <h4>User</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-4">
@@ -41,8 +40,8 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model?.Id" class=" btn btn-primary">Edit</a> |
+    <a asp-action="Index" class=" btn btn-primary" >Back to List</a>
 </div>
 </div>
 </div>

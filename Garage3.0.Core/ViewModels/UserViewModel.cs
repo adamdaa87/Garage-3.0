@@ -1,11 +1,16 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Garage3._0.Core.Entities;
+using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-
-namespace Garage3._0.Core.Entities
+namespace Garage3._0.Core.ViewModels
 {
-    public class User
+    internal class UserViewModel
     {
         public int Id { get; set; }
 
@@ -28,6 +33,5 @@ namespace Garage3._0.Core.Entities
         public string Pnr { get; set; }
 
         public ICollection<Vehicle> Vehicles { get; set; } = new List<Vehicle>();
-
     }
 }

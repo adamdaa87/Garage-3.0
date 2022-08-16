@@ -18,31 +18,11 @@ namespace Garage_2._0.Migrations
                     UserName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Fname = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Lname = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Pnr = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Pnr = table.Column<string>(type: "nvarchar(12)", maxLength: 12, nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_User", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Vehicle_old",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ParkingLot = table.Column<int>(type: "int", nullable: false),
-                    RegNr = table.Column<string>(type: "nvarchar(6)", maxLength: 6, nullable: false),
-                    VehicleType = table.Column<int>(type: "int", nullable: false),
-                    Make = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    Model = table.Column<string>(type: "nvarchar(12)", maxLength: 12, nullable: false),
-                    Color = table.Column<string>(type: "nvarchar(12)", maxLength: 12, nullable: false),
-                    NrOfWheels = table.Column<int>(type: "int", nullable: false),
-                    TimeOfArrival = table.Column<DateTime>(type: "datetime2", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Vehicle_old", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -67,7 +47,12 @@ namespace Garage_2._0.Migrations
                     RegNr = table.Column<string>(type: "nvarchar(6)", maxLength: 6, nullable: false),
                     TimeOfArrival = table.Column<DateTime>(type: "datetime2", nullable: false),
                     VehicleTypeId = table.Column<int>(type: "int", nullable: false),
-                    UserId = table.Column<int>(type: "int", nullable: false)
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    ParkingLot = table.Column<int>(type: "int", nullable: false),
+                    Make = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    Model = table.Column<string>(type: "nvarchar(12)", maxLength: 12, nullable: false),
+                    Color = table.Column<string>(type: "nvarchar(12)", maxLength: 12, nullable: false),
+                    NrOfWheels = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -101,9 +86,6 @@ namespace Garage_2._0.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Vehicle");
-
-            migrationBuilder.DropTable(
-                name: "Vehicle_old");
 
             migrationBuilder.DropTable(
                 name: "User");
