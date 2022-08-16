@@ -48,3 +48,14 @@ footer{
 .pagecolors {
     background-color: rgb(193, 193, 193, 0.7);
 }
+header {
+    top: 0;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+}
+.main {
+    margin-top: 95px;
+    overflow: hidden;
+    overflow-y: scroll;
+}
