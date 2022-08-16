@@ -172,24 +172,6 @@ namespace Garage_2._0.Controllers
             return (_context.User?.Any(e => e.Id == id)).GetValueOrDefault();
         }
 
-        public async Task<JsonResult> UniqueCheckPersonnummer(string Pnr)
-        {
-            if (_context.User == null)
-            {
-               // return Problem ("Entity set 'Garage_2_0Context.User' is null.");
-            }
-
-            if (await _context.User.AnyAsync(r => r.Pnr == Pnr))
-            {
-                return Json("Personnummer is already in the garage");
-            }
-            else
-            {
-                return Json(true);
-            }
-
-        }
-
         [HttpGet]
         public JsonResult ValidatePerNum(string Pnr)
         {
@@ -198,12 +180,12 @@ namespace Garage_2._0.Controllers
 
             if (UInt64.TryParse(Pnr, out i))
             {
-                LuhnStr = Pnr.Substring(2).Remove(9, 1); // Deletes the first 2 digits and the last digit (yyyymmddxxxx => yymmddxxx)                                                         
-                if (Luhn(LuhnStr) == Pnr[11] - '0')
+                if (DateTime.TryParseExact(Pnr.Substring(0, Pnr.Length - 4), "yyyymmdd", CultureInfo.InvariantCulture, DateTimeStyles.None, out dt))
                 {
-                    if (DateTime.TryParseExact(Pnr.Substring(0, Pnr.Length - 4), "yyyymmdd", CultureInfo.InvariantCulture, DateTimeStyles.None, out dt))
+                    LuhnStr = Pnr.Substring(2).Remove(9, 1); // Deletes the first 2 digits and the last digit (yyyymmddxxxx => yymmddxxx)                                                         
+                    if (Luhn(LuhnStr) == Pnr[11] - '0')
                     {
-                        dt = DateParse(Pnr);
+                        //dt = DateParse(Pnr);
                         return Json(true);
                     }
                     else
@@ -220,18 +202,18 @@ namespace Garage_2._0.Controllers
                 return Json("The personal number shall have only digits");
         }
 
-        private static DateTime DateParse(string Pnr)
-        {
-            Pnr = Pnr.Remove(8, 4);
-            int year = int.Parse(Pnr.Substring(0, 4));
-            int month = int.Parse(Pnr.Substring(4,2));
-            int day = int.Parse(Pnr.Substring(6, 2));
+        //private static DateTime DateParse(string Pnr)
+        //{
+        //    Pnr = Pnr.Remove(8, 4);
+        //    int year = int.Parse(Pnr.Substring(0, 4));
+        //    int month = int.Parse(Pnr.Substring(4,2));
+        //    int day = int.Parse(Pnr.Substring(6, 2));
 
-            DateTime date1 = new DateTime(year, month, day);
-            
-            return date1;
+        //    DateTime date1 = new DateTime(year, month, day);
 
-        }
+        //    return date1;
+
+        //}
 
         private static int Luhn(string value)
         {
