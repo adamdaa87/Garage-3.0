@@ -12,7 +12,7 @@
 <div>
     <h4 class="mt-4">Receipt</h4>
     <hr />
-    <dl class="row bg-white">
+    <dl class="row">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.ParkingLot)
         </dt>
@@ -84,7 +84,7 @@
     <p class="mt-5">Are you sure you wish to end your parking session?</p>
     <form asp-action="Delete">
         <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Stop parking" class="btn btn-danger mx-3" /><a asp-action="Index" class="btn btn-dark">Go back to mainpage</a>
+        <input type="submit" value="Stop parking" class="btn btn-danger mx-3" /><a asp-controller="Vehicle" asp-action="Admin" class="btn btn-dark">Go back to vehiclelist</a>
     </form>
 
 </div>

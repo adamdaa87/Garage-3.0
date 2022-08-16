@@ -64,7 +64,7 @@ namespace Garage_2._0.Controllers
                 return NotFound();
             }
 
-            var vehicle2 = await _context.Vehicle
+            var vehicle2 = await _context.Vehicle.Include(v => v.User)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (vehicle2 == null)
             {
