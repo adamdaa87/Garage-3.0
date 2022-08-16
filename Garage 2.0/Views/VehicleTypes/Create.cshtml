@@ -4,7 +4,8 @@
     ViewData["Title"] = "Create";
 }
 
-<h2 class="text-white" >Create VehicleType</h2>
+<div class="card rounded-3 listfunc border-0 p-3">
+<h1>Create Vehicle Type</h1>
 
 <hr />
 <div class = "bg-light constainer col-4 rounded-3">
@@ -23,11 +24,12 @@
         </form>
     </div>
 </div>
-</div>
-
 <div>
     <a asp-action="Index" class="btn btn-primary mt-3" >Back to List</a>
 </div>
+</div>
+
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

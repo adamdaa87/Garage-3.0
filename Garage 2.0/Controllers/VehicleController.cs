@@ -56,19 +56,6 @@ namespace Garage_2._0.Controllers
             //            Problem("Entity set 'Garage_2_0Context.Vehicle2'  is null.");
         }
 
-        public async Task<IActionResult> Index2(string searchString)
-        {
-            var vehicles = from m in _context.Vehicle
-                         select m;
-
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                vehicles = vehicles.Where(s => s.RegNr!.Contains(searchString));
-            }
-
-            return View(nameof(Index), await vehicles.ToListAsync());
-        }
-
         // GET: Vehicle2/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -320,6 +307,35 @@ namespace Garage_2._0.Controllers
         private async Task<int> Statistics_2_Async()
         {
             return _context.Vehicle.Sum(v => v.NrOfWheels);                                            
+        }
+
+        public async Task<IActionResult> Admin()
+        {
+            return View(await _context.Vehicle.Select(v => new IndexViewModel
+            {
+                Fname = v.User.Fname,
+                Lname = v.User.Lname,
+                Id = v.Id,
+                RegNr = v.RegNr,
+                TimeOfArrival = v.TimeOfArrival,
+                TypeName = v.VehicleType.TypeName,
+                ParkingLot = v.ParkingLot,
+                Make = v.Make,
+                Model = v.Model,
+                Color = v.Color
+            }).ToListAsync());
+        }
+        public async Task<IActionResult> Admin2(string searchString)
+        {
+            var vehicles = from m in _context.Vehicle
+                           select m;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                vehicles = vehicles.Where(s => s.RegNr!.Contains(searchString));
+            }
+
+            return View(nameof(Admin), await vehicles.ToListAsync());
         }
     }
 }
