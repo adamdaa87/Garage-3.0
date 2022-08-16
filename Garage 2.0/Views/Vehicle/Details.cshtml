@@ -65,15 +65,27 @@
             @Html.DisplayFor(model => model.VehicleTypeId)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.UserId)
+            @Html.DisplayNameFor(model => model.User.Fname)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.UserId)
+            @Html.DisplayFor(model => model.User.Fname)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.User.Lname)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.User.Lname)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.User.UserName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.User.UserName)
         </dd>
     </dl>
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-dark mx-3 my-4">Visit workshop</a>
-    <a asp-action="Index" class="btn btn-dark">Go back to mainpage</a>
+    <a asp-controller="Vehicle" asp-action="Admin" class="btn btn-dark">Go back to vehiclelist</a>
 </div>
 </div>
