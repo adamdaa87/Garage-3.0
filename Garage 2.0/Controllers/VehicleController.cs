@@ -332,7 +332,17 @@ namespace Garage_2._0.Controllers
                 || s.VehicleType.TypeName.Contains(searchString));
             }
 
-            return View(nameof(Admin), await vehicles.ToListAsync());
+            var viewModel = vehicles.Select(v => new IndexViewModel
+            {
+                Fname= v.User.Fname,
+                Lname= v.User.Lname,
+                ParkingLot= v.ParkingLot,
+                TypeName= v.VehicleType.TypeName,
+                RegNr= v.RegNr,
+                TimeOfArrival= v.TimeOfArrival
+            });
+
+            return View(nameof(Admin), await viewModel.ToListAsync());
         }
     }
 }

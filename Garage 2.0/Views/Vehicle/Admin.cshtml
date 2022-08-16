@@ -4,32 +4,8 @@
     ViewData["Title"] = "Admin";
 }
 
-@*@if (@Model.Message == "")
-{
-    <div class="alert alert-success">@Model.Message</div>
-}
-<div class="container">
-<div class="row my-3">
-<div class="col-2 mt-3">    
-    <div class="card rounded-3 sectioncolors border-2 border-white">
-    <h6>Available spaces: @ViewData["NrOfAvailableSlots"]</h6>
-    <h6>Vehicles in garage: @Model.Count()</h6> </div>
-</div>
-<div class="col-2"></div>
-<div class="col-4 text-center">
-<a asp-action="Create" class="btn btn-success rounded-circle text-white parkbutton p-4 border-2 border-white">Park your car</a>
-</div>
-</div>
-</div>
-
-
-@if(TempData["Message"] != null)
-{
-    <div id="div" class="alert alert-success my-3 text-center">@TempData["Message"]</div>
-}*@
-
-<div class="card rounded-3 listfunc border-0">
-<div class="container">
+<div class="card rounded-3 listfunc border-0 pagecolors">
+<div class="container-fluid">
 
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm box-shadow mb-3 sectioncolors navbar-dark rounded-3">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -102,7 +78,8 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.OrderBy(p => p.ParkingLot).ToList()) {
+        @*OrderBy(p => p.Fname).ToList())*@
+@foreach (var item in Model.OrderBy(x => x.Fname).ThenBy(y=>y.Fname).ToList()){ 
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Fname)

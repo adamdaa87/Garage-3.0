@@ -4,12 +4,16 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
-
+<div class="card rounded-3 listfunc border-0 p-3 pagecolors">
+<h1 class="text-center">Edit</h1>
+<hr />
+<div class="row">
+    <div class="col-md-5"></div>
+    <div class="col-md-2">
 <h4>User</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div>
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
@@ -42,6 +46,9 @@
 
 <div>
     <a asp-action="Index">Back to List</a>
+</div>
+</div>
+</div>
 </div>
 
 @section Scripts {

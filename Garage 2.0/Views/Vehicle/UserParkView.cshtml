@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<IndexViewModel>
-@model IEnumerable<User>
+@*@model IEnumerable<User>*@
 
 @{
     ViewData["Title"] = "UserParkView";
@@ -24,9 +24,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.TypeName)
             </th>
-            <th>
+@*            <th>
                 @Html.DisplayNameFor(model => model.UserName)
-            </th>
+            </th>*@
                 @Html.DisplayNameFor(model => model.TimeOfArrival)
             </th>
             <th></th>
@@ -50,9 +50,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.TypeName)
             </td>
-            <td>
+@*            <td>
                 @Html.DisplayFor(modelItem => item.UserName)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.TimeOfArrival)
             </td>

@@ -16,7 +16,7 @@ namespace Garage3._0.Core.Entities
         [DisplayName("Last Name")]
         public string Lname { get; set; }
         [Required]
-        [DisplayName("Personal number")]
+        [DisplayName("Social security number")]
         public string Pnr { get; set; }
 
         public ICollection<Vehicle> Vehicles { get; set; } = new List<Vehicle>();

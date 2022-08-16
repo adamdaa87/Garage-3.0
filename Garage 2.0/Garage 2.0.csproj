@@ -9,12 +9,16 @@
 
   <ItemGroup>
     <Compile Remove="Models\Services\**" />
+    <Compile Remove="Views\Home\**" />
     <Compile Remove="Views\Vehicles\**" />
     <Content Remove="Models\Services\**" />
+    <Content Remove="Views\Home\**" />
     <Content Remove="Views\Vehicles\**" />
     <EmbeddedResource Remove="Models\Services\**" />
+    <EmbeddedResource Remove="Views\Home\**" />
     <EmbeddedResource Remove="Views\Vehicles\**" />
     <None Remove="Models\Services\**" />
+    <None Remove="Views\Home\**" />
     <None Remove="Views\Vehicles\**" />
   </ItemGroup>
 

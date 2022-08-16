@@ -10,109 +10,42 @@
 }*@
 <div class="container">
 <div class="row my-3">
+    <div class="col-5"></div>
 <div class="col-2 mt-3">    
-    <div class="card rounded-3 sectioncolors border-2 border-white">
+    <div class="card rounded-3 sectioncolors p-2">
     <h6>Available spaces: @ViewData["NrOfAvailableSlots"]</h6>
     <h6>Vehicles in garage: @Model.Count()</h6> </div>
 </div>
-<div class="col-2"></div>
+</div>
+<div class="row my-3">
+    <div class="col-3"></div>
+<div class="col-6 text-center">
+    <h3 class="text-white"><br />Welcome to Garage Stockholm</h3><br /><br /><h4 class="text-white">If you are already a member please start your parking</h4>
+    </div>
+    </div>
+<div class="row my-3">
+<div class="col-4"></div>
 <div class="col-4 text-center">
-<a asp-action="Create" class="btn btn-success rounded-circle text-white parkbutton p-4 border-2 border-white">Park your car</a>
+<a asp-action="Create" class="btn btn-secondary rounded-3 parkbutton p-2">Park your vehicle</a>
 </div>
 </div>
+<div class="row mt-3">
+    <div class="col-3"></div>
+<div class="col-6 text-center">
+    <br /><h5 class="text-white">Not a member?</h5>
+    </div>
+    </div>
+<div class="row">
+<div class="col-5"></div>
+<div class="col-2 text-center">
+<a a class="btn btn-secondary rounded-3 p-2" asp-area="" asp-controller="Users" asp-action="Create">Register now!</a>
 </div>
-
+</div>
 
 @if(TempData["Message"] != null)
 {
     <div id="div" class="alert alert-success my-3 text-center">@TempData["Message"]</div>
 }
-@*
-<div class="card rounded-3 listfunc border-0">
-<div class="container">
-<div class="row sectioncolors">
-<div class="col-3"></div>
-<div class="card-title col-6 text-center">
-    <h3 class="m-2">Current cars in garage</h3>
-    <form asp-controller="Vehicle" asp-action="Index2" method="get">
-    <p>
-        <input class="rounded-3 searchheight" type="text" name="SearchString" placeholder="Registration number" />
-        <input class="btn btn-success rounded-3 text-white searchheight" type="submit" value="Search" />
-    </p>
-    </form> 
-</div>
-</div>
-</div>
-<div class="card-body whitebg">
-<table class="table mb-5">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ParkingLot)
-            </th>            
-            <th>
-                @Html.DisplayNameFor(model => model.RegNr)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TypeName)
-            </th>
-          <th>
-                @Html.DisplayNameFor(model => model.Fname)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Model)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Color)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NrOfWheels)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TimeOfArrival)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.OrderBy(p => p.ParkingLot).ToList()) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ParkingLot)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RegNr)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TypeName)
-            </td>
-          <td>
-                @Html.DisplayFor(modelItem => item.Make)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Model)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Color)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NrOfWheels)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TimeOfArrival)
-            </td>
-            <th>
-                @Html.DisplayNameFor(model => model.User)
-            </th>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-dark">Visit workshop</a>
-                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-dark">View vehicle</a>
-                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Stop parking</a>
-            </td>
-        </tr>
-}
 
-    </tbody>
-</table>*@
 </div>
 </div>
