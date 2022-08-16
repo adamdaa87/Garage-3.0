@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Garage_2._0.Data;
 using Garage3._0.Core.Entities;
+using Garage3._0.Core.ViewModels;
 
 namespace Garage_2._0.Models
 {
@@ -22,9 +23,16 @@ namespace Garage_2._0.Models
         // GET: VehicleTypes
         public async Task<IActionResult> Index()
         {
-              return _context.VehicleType != null ? 
-                          View(await _context.VehicleType.ToListAsync()) :
-                          Problem("Entity set 'Garage_2_0Context.VehicleType'  is null.");
+            return View(await _context.VehicleType.Select(v => new VehicleTypeViewModel
+            {
+                Id = v.Id,
+                TypeName = v.TypeName
+
+            }).ToListAsync());
+
+            //return _context.VehicleType != null ? 
+            //              View(await _context.VehicleType.ToListAsync()) :
+            //              Problem("Entity set 'Garage_2_0Context.VehicleType'  is null.");
         }
 
         // GET: VehicleTypes/Details/5
@@ -56,16 +64,21 @@ namespace Garage_2._0.Models
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,TypeName")] VehicleType vehicleType)
-
+        public async Task<IActionResult> Create([Bind("Id,TypeName")] VehicleTypeViewModel vehicleView /*VehicleType vehicleType*/)
         {
             if (ModelState.IsValid)
             {
+                var vehicleType = new VehicleType
+                {
+                    Id = vehicleView.Id,
+                    TypeName = vehicleView.TypeName
+                };
+
                 _context.Add(vehicleType);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(vehicleType);
+            return View(vehicleView);
         }
 
         // GET: VehicleTypes/Edit/5

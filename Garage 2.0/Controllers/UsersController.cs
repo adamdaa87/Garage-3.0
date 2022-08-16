@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Garage3._0.Core.Entities;
+using Garage3._0.Core.ViewModels;
 using Garage_2._0.Data;
 using System.Globalization;
 
@@ -15,6 +16,7 @@ namespace Garage_2._0.Controllers
     {
         private readonly Garage_2_0Context _context;
         private DateTime dt;
+
         public UsersController(Garage_2_0Context context)
         {
             _context = context;
@@ -23,10 +25,19 @@ namespace Garage_2._0.Controllers
         // GET: Users
         public async Task<IActionResult> Index()
         {
-            return _context.User != null ?
-                        View(await _context.User.ToListAsync()) :
-                        Problem("Entity set 'Garage_2_0Context.User'  is null.");
-        }
+            return View(await _context.User.Select(v => new UserViewModel
+            {
+                Id = v.Id,
+                UserName = v.UserName,
+                Fname = v.Fname,
+                Lname = v.Lname,
+                Pnr = v.Pnr
+            }).ToListAsync());
+
+                //return _context.User != null ?
+                //            View(await _context.User.ToListAsync()) :
+                //            Problem("Entity set 'Garage_2_0Context.User'  is null.");
+            }
 
         // GET: Users/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -42,6 +53,19 @@ namespace Garage_2._0.Controllers
             {
                 return NotFound();
             }
+
+            //var viewModel = new UserDetailViewModel
+            //{
+            //    Id = user.Id,
+            //    UserName = user.UserName,
+            //    Fname = user.Fname,
+            //    Lname = user.Lname,
+            //    Pnr = user.Pnr,
+
+            //    Vehicles = user.Vehicles.Select(v => new Vehicle
+                
+            //    )
+            //};
 
             return View(user);
         }

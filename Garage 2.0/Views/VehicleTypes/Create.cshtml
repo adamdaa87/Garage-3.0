@@ -1,4 +1,4 @@
-﻿@model VehicleType
+﻿@model VehicleTypeViewModel
 
 @{
     ViewData["Title"] = "Create";
@@ -28,8 +28,6 @@
     <a asp-action="Index" class="btn btn-primary mt-3" >Back to List</a>
 </div>
 </div>
-
-
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

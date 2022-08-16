@@ -1,4 +1,4 @@
-﻿@model Garage3._0.Core.Entities.User
+﻿@model Garage3._0.Core.ViewModels.UserDetailViewModel
 
 @{
     ViewData["Title"] = "Details";
@@ -38,6 +38,52 @@
             @Html.DisplayFor(model => model.Pnr)
         </dd>
     </dl>
+
+    <table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pnr)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Vehicles) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RegNr)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VehicleType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ParkingLot)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TimeOfArrival)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-dark">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-dark">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+    </table>
+
+
+
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.Id" class=" btn btn-primary">Edit</a> |

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Garage3._0.Core.ViewModels
 {
-    internal class VehicleTypeViewModel
+    public class VehicleTypeViewModel
     {
         public int Id { get; set; }
 

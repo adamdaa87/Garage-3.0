@@ -50,7 +50,6 @@ namespace Garage_2._0.Controllers
                 ParkingLot = v.ParkingLot
             }).ToListAsync());
                 
-
             //return _context.Vehicle2 != null ?
             //            View(await _context.Vehicle2.ToListAsync()) :
             //            Problem("Entity set 'Garage_2_0Context.Vehicle2'  is null.");

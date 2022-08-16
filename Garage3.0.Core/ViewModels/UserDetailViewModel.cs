@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Garage3._0.Core.ViewModels
 {
-    public class UserViewModel
+    public class UserDetailViewModel
     {
         public int Id { get; set; }
 
